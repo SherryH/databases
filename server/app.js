@@ -1,6 +1,6 @@
 var express = require('express');
 var db = require('./db');
-
+var models = require('./models'); //added temporarily for debugging
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
@@ -28,5 +28,8 @@ app.use(express.static(__dirname + '/../client'));
 if (!module.parent) {
   app.listen(app.get('port'));
   console.log('Listening on', app.get('port'));
+  // models.messages.get(function(data) {
+  //   console.log('from app:', data);
+  // });
 }
 

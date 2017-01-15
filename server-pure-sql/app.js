@@ -1,6 +1,6 @@
 var express = require('express');
 var db = require('./db');
-//var models = require('./models'); //added temporarily for debugging
+var models = require('./models'); //added temporarily for debugging
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');

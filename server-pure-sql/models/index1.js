@@ -15,13 +15,13 @@ module.exports = {
 
       db.query('select userID from users where username=?', [req.username], function (err, results) {
         var userID = results[0].userID;
-          db.query('select roomID from rooms where roomname=?', [req.roomname],
-            function (err, results) {
+        db.query('select roomID from rooms where roomname=?', [req.roomname],
+          function (err, results) {
             //object with roomID
             //{roomID: }
             console.log('roomID results[0]:', results[0]);
             if (results[0]) {
-            var roomID = results[0].roomID;
+              var roomID = results[0].roomID;
             } else {
               var roomID = 1;
               db.query('select roomID from rooms order by roomID desc limit 1;', function(err, results) {
@@ -42,14 +42,14 @@ module.exports = {
               } else {
                 var id = 1;
               }
-                db.query('insert into messages values (?,?,?,?)', [id, req.message, userID, roomID], function (err, results) {
-                  if (err) {
-                    console.log(err);
-                  }
-                });
+              db.query('insert into messages values (?,?,?,?)', [id, req.message, userID, roomID], function (err, results) {
+                if (err) {
+                  console.log(err);
+                }
               });
             });
           });
+      });
       //db.query('insert into messages values ("' + req.text +'"");
     } // a function which can be used to insert a message into the database
   },
